@@ -1,0 +1,32 @@
+.home-container {
+  width: 95%;
+  margin: 0 auto;
+
+  /* box-shadow: 0 0 4.5rem rgba(0, 0, 0, 0.09); */
+  border-radius: 1rem;
+  padding: 2rem 0rem;
+  /* align-items: center;
+  justify-content: center; */
+  /* place-items: center; */
+  /* row-gap: 1.5rem; */
+  margin-bottom: 1.9rem;
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.welcome {
+  /* grid-column: 1; */
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #777;
+}
+.auth-btn {
+  display: flex;
+  gap: 1rem;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 30rem;
+}

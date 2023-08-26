@@ -4,10 +4,12 @@ const authRoute = require('./routes/authRoute');
 const usersRoute = require('./routes/userRoute');
 const tradeRoute = require('./routes/tradeRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
+const cors = require('cors');
 
 const app = express();
 //middlewares
 app.use(express.json());
+app.use(cors({ origin: 'http://127.0.0.1:3000' }));
 
 //Routes
 app.use('/api/v1/auth', authRoute);

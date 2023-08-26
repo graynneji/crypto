@@ -10,10 +10,10 @@ exports.dashboard = async (req, res) => {
   try {
     const userData = await User.findById(userId);
     const tradeData = await Trade.find({ userId });
-
+    const { password, ...others } = userData._doc;
     res.status(200).json({
       status: 'Success',
-      userData,
+      others,
       tradeData,
     });
   } catch (err) {

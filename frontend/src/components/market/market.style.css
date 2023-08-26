@@ -1,0 +1,45 @@
+.market-data {
+  display: flex;
+  justify-content: space-between;
+  /* font-size: 2rem; */
+  padding: 1rem 0rem 1rem 0rem;
+  align-items: center;
+  /* box-shadow: 0 0 0.5rem rgba(153, 153, 153, 0.075); */
+
+  /* margin: 0.2rem 0rem 0rem 0rem; */
+  border-radius: 0.5rem;
+  /* background-color: rgba(153, 153, 153, 0.114); */
+}
+.market-header {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+.coin-symbol-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.positive {
+  color: green;
+}
+.negative {
+  color: red;
+}
+.coin-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #444444e6;
+  letter-spacing: 0.02rem;
+}
+.coin-symbol {
+  color: rgba(153, 153, 153, 0.765);
+}
+.coin-price {
+  font-weight: 200;
+}
+.fx {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}

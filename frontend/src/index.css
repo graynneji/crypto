@@ -1,0 +1,27 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  /* overflow-x: hidden; */
+}
+body {
+  justify-content: center;
+  max-height: 100vh;
+
+  font-family: "Montserrat", sans-serif;
+
+  /* list-style: 1; */
+  font-weight: 400;
+}
+.container {
+  min-width: 32rem;
+  max-width: 42.8rem;
+  width: 100%;
+  margin: 0 auto;
+  /* background-color: #f3f6fd; */
+  /* box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.09);  */
+  overflow: hidden;
+}
