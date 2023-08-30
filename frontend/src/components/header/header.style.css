@@ -1,12 +1,29 @@
 .header {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
-.right-header {
+/* .right-header {
   display: flex;
   gap: 5rem;
   align-items: center;
   justify-content: center;
+} */
+.header-side{
+display: flex;
+justify-content: space-between;
+}
+.logo{
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 1rem 0rem 1rem 0rem;
+  color: #c08000a8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
 }

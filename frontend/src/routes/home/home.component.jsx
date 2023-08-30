@@ -2,8 +2,8 @@ import "./home.style.css";
 import Button from "../../components/button/button.component";
 import Market from "../../components/market/market.component";
 import Header from "../../components/header/header.component";
-
-export default function Home({ datas }) {
+import Nav from "../../components/nav/nav.component";
+export default function Home() {
   return (
     <div className="home-container">
       <Header color="#444" />
@@ -16,7 +16,8 @@ export default function Home({ datas }) {
           Sign up
         </Button>
       </div>
-      <Market datas={datas} />
+      {/* <Market /> */}
+      <Nav />
     </div>
   );
 }

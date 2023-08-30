@@ -1,0 +1,16 @@
+.nav-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 50%; /* Corrected value */
+  transform: translateX(-50%); /* Center the menu horizontally */
+  width: 100%; /* Adjust the width based on your layout */
+  /* background-color: #fff; */
+  height: 60px; /* Set the desired height */
+  border-top: 0.1rem solid #ccc;
+  box-shadow: 0rem -0.2rem 1rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  background-color: #fff;
+}

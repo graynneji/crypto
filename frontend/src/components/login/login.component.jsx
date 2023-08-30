@@ -3,22 +3,35 @@ import React, { useState } from "react";
 import Input from "../input/form-input.component";
 import "./login.style.css";
 import Button from "../button/button.component";
+import {FcGoogle} from 'react-icons/fc'
+import LogRegToggle from '../logRegToggle/logRegToggle.component'
+
 
 const Login = () => {
-  const handleLogin = async () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log('logged')
     try {
       const res = await axios.post("http://localhost:9000/api/v1/auth/login", {
         email,
         password,
       });
-
+      console.log(email);
+      console.log(password);
       console.log(res.data);
+      setEmail('')
+      setPassword('')
     } catch (err) {
       setError("Invalid credentials, please try again");
+      console.log(err);
     }
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    console.log(e.target.value);
     setError("");
   };
   const handlePasswordChange = (e) => {
@@ -26,12 +39,14 @@ const Login = () => {
     setError("");
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+      <h1>Log-In</h1>
+      <div className="error">
+      {error && <p style={{ color: "red", textAlign: 'center', fontSize:'1.5rem' }}>{error}</p>}
+      </div>
       <Input
         label="Email"
         type="email"
@@ -47,14 +62,29 @@ const Login = () => {
         required
         onChange={handlePasswordChange}
         name="password"
-        value={email}
+        value={password}
       />
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <Button type="submit" buttonType="loginRegister" onClick={handleLogin}>
+      <p className="forget"> Forgot password ?</p>
+      
+      <Button type="submit" buttonType='login' >
         Login
       </Button>
-      {/* <button onClick={handleLogin}>Login</button> */}
+      
+{/* horizontal line */}
+<div className="line-container">
+      <div className="line"></div>
+      <span className="or">or</span>
+      <div className="line"></div>
     </div>
+
+      <Button type='button' buttonType='google'><div className="google-inside"><FcGoogle size={24}/> <p className="goo">Continue with Google</p></div></Button>
+     
+      {/* <button onClick={handleLogin}>Login</button> */}
+
+      <LogRegToggle />
+      </form>
+    </div>
+    
   );
 };
 export default Login;

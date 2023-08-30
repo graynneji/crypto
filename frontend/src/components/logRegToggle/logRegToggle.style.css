@@ -1,0 +1,10 @@
+.gxtrade{
+    display: flex;
+    gap: .5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .gxtrade p{
+    color: #C07F00;
+    cursor: pointer;
+  }

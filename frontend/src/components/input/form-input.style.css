@@ -1,6 +1,7 @@
 .group {
   position: relative;
-  margin: 45px 0;
+  /* margin: 1.5rem 0; */
+  margin: 4.5rem 0;
 }
 
 .group .form-input {

@@ -17,6 +17,7 @@ const server = http.createServer(app);
 
 const io = socketIo(server, {
   cors: {
+     
     origin: '*', // Adjust this to your frontend's domain for production
     // origin: 'http://127.0.0.1:3000', // Adjust this to your frontend's domain for production
   },
@@ -119,73 +120,46 @@ const tradingPairs = [
   { symbol: 'chzusdt', name: 'Chiliz' },
 ];
 
-const dataObject = [];
-// Create WebSocket connections for each trading pair
-const websockets = tradingPairs.map((pair) => {
-  try {
-    console.log(pair);
-    const ws = new WebSocket(
-      `wss://stream.binance.com:9443/ws/${pair.symbol}@trade`
-    );
+// const dataObject = [];
+// // Create WebSocket connections for each trading pair
+// const websockets = tradingPairs.map((pair) => {
+//   try {
+//     console.log(pair);
+//     const ws = new WebSocket(
+//       `wss://stream.binance.com:9443/ws/${pair.symbol}@trade`
+//     );
 
-    // ws.on('open', () => {
-    //   console.log(
-    //     `WebSocket connection opened for trading pair ${pair.symbol}`
-    //   );
-    // });
+//     ws.on('message', (data) => {
+//       const tradeUpdate = JSON.parse(data);
+//       const symbol = tradeUpdate.s.toLowerCase();
+//       const price = parseFloat(tradeUpdate.p);
 
-    ws.on('message', (data) => {
-      const tradeUpdate = JSON.parse(data);
-      const symbol = tradeUpdate.s.toLowerCase();
-      const price = parseFloat(tradeUpdate.p);
-      // const price = tradeUpdate.p;
+//       // Extract the name of the currency (without "usdt")
+//       const currency = symbol.replace('usdt', '');
 
-      // Extract the name of the currency (without "usdt")
-      const currency = symbol.replace('usdt', '');
+//       const currencyInfo = {
+//         name: pair.name,
+//         symbol: currency,
+//         price: price,
+//       };
 
-      const currencyInfo = {
-        name: pair.name,
-        symbol: currency,
-        price: price,
-      };
+//       dataObject[symbol] = currencyInfo;
 
-      dataObject[symbol] = currencyInfo;
+//       const dataArray = Object.values(dataObject);
 
-      const dataArray = Object.values(dataObject);
+//       io.emit('crypto', dataArray);
+//     });
 
-      io.emit('crypto', dataArray);
-    });
-    //   ws.on('close', () => {
-    //     console.log(`WebSocket connection closed for trading pair ${pair}`);
-    //   });
-
-    //   ws.on('error', (error) => {
-    //     console.error(`WebSocket error for trading pair ${pair}:`, error);
-    //   });
-    // });
-    // return ws;
-  } catch (err) {
-    console.log(err.message);
-  }
-});
+//     // return ws;
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// });
 // Handle application exit
 process.on('SIGINT', () => {
   websockets.forEach((ws) => ws.close());
   process.exit();
 });
-
-///ANOTHER ONE
-
-// ws.on('message', (data) => {
-//   const tickers = JSON.parse(data);
-
-//   io.emit('crypto', tickers);
-
-// });
-
-// ws.on('error', (error) => {
-//   console.error('WebSocket error:', error);
-// });
 
 const DB = process.env.DATABASE;
 mongoose
