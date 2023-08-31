@@ -1,6 +1,6 @@
 const User = require('../models/userModel');
 
-//Get User
+//Get Users
 exports.getAllUsers = async (req, res) => {
   const allUsers = await User.find();
   // const { password, ...others } = allUsers._doc;
@@ -13,6 +13,13 @@ exports.getAllUsers = async (req, res) => {
 //Get user
 exports.getAUser = async (req, res) => {
   const user = await User.findById(req.params.id);
+  //if no user
+  if(!user){
+    res.status(400).json({
+      status: 'Fail',
+      message: 'You are not logged in!'
+    })
+  }
   const { password, ...others } = user._doc;
   res.status(200).json({
     status: 'Success',

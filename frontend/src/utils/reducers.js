@@ -4,6 +4,7 @@ import { TOGGLE_LOG_REG, SET_ERROR } from './authActions';
 const initialState = {
   toggleLogReg: null,
   error: null,
+  user: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+
     default:
       return state;
   }

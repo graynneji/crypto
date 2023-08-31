@@ -18,13 +18,32 @@ const Register =()=>{
   const [error, setError]= useState('');
   const {firstName, lastName, email, password, confirmPassword} = formFields;
 
-//   const handleSubmit = async ()=>{
-// const res = await axios.post('http://localhost:9000/api/v1/register', {
+  
+  const handleSubmit = async (event)=>{
+    event.preventDefault()
+  try {
+    const res = await axios.post("http://localhost:9000/api/v1/auth/register", {
+    firstName,
+    lastName,  
+    email,
+    password,
+    confirmPassword
+    });
+    console.log(email);
+    console.log(password);
+    console.log(res.data);
+ setFormFields(defaultFormFields)
+  } catch (err) {
+    if(err.response){
+      setError(err.response.data.message)
+    }
+  
+  }
 
-// })
+  }
 
-//   }
   const handleChange =(event)=>{
+   
     const {name, value}= event.target
   setFormFields({...formFields, [name]: value})
   console.log(formFields)
@@ -34,13 +53,13 @@ const Register =()=>{
         
         <>
    <div className='register-container'>
-      <form >
+      <form onSubmit={handleSubmit}>
       <h1>Create Personal Account</h1>
       <div className="error">
       {error && <p style={{ color: "red", textAlign: 'center', fontSize:'1.5rem' }}>{error}</p>}
       </div>
       <Input
-        label="Firstname"
+        label="First Name"
         type="firstname"
         required
         onChange={handleChange}
@@ -48,11 +67,11 @@ const Register =()=>{
         value={firstName}
       />
       <Input
-        label="lastname"
+        label="last Name"
         type="lastname"
         required
         onChange={handleChange}
-        name="lastname"
+        name="lastName"
         value={lastName}
       />
        <Input
@@ -76,7 +95,7 @@ const Register =()=>{
         type="password"
         required
         onChange={handleChange}
-        name="password"
+        name="confirmPassword"
         value={confirmPassword}
       />
        

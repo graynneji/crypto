@@ -3,14 +3,23 @@ import React, { useState } from "react";
 import Input from "../input/form-input.component";
 import "./login.style.css";
 import Button from "../button/button.component";
-import {FcGoogle} from 'react-icons/fc'
-import LogRegToggle from '../logRegToggle/logRegToggle.component'
+import {FcGoogle} from 'react-icons/fc';
+import LogRegToggle from '../logRegToggle/logRegToggle.component';
+import {useDispatch} from 'react-redux';
+import {login} from '../../utils/authActions';
 
-
+const defaultFormFields = {
+  email: '',
+  password: '',
+}
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
+  const [formFields, setFormFields] = useState(defaultFormFields)
+  const {email, password} = formFields
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log('logged')
@@ -19,25 +28,37 @@ const Login = () => {
         email,
         password,
       });
-      console.log(email);
-      console.log(password);
+      
+      dispatch(login({accessToken: res.data.accessToken, userId: res.data.user._id}))
       console.log(res.data);
-      setEmail('')
-      setPassword('')
+
+      setFormFields(defaultFormFields)
     } catch (err) {
-      setError("Invalid credentials, please try again");
-      console.log(err);
+      if(err.response){
+        setError(err.response.data.message)
+      }
+    
+     
     }
   };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    console.log(e.target.value);
-    setError("");
-  };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    setError("");
-  };
+
+  const handleChange = (event)=>{
+   
+    const {name, value}= event.target
+  setFormFields({...formFields, [name]: value})
+  console.log(formFields)
+  setError('')
+  }
+
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  //   console.log(e.target.value);
+  //   setError("");
+  // };
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  //   setError("");
+  // };
 
 
   return (
@@ -51,7 +72,7 @@ const Login = () => {
         label="Email"
         type="email"
         required
-        onChange={handleEmailChange}
+        onChange={handleChange}
         name="email"
         value={email}
       />
@@ -60,7 +81,7 @@ const Login = () => {
         label="Password"
         type="password"
         required
-        onChange={handlePasswordChange}
+        onChange={handleChange}
         name="password"
         value={password}
       />

@@ -9,12 +9,12 @@ exports.register = async (req, res) => {
     const clientBrowser = req.clientBrowser;
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
       res.status(400);
-      throw new Error('All fields are required');
+      throw new Error('All fields are required!');
     }
     const userAvailable = await User.findOne({ email });
     if (userAvailable) {
       res.status(400);
-      throw new Error('User already registered!');
+      throw new Error('An account is associated with this email!');
     }
     if (password !== confirmPassword) {
       res.status(400);
@@ -61,6 +61,13 @@ exports.login = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'No account was found with this user!',
+      });
+    }
     //compare users
     if (user && (await bcrypt.compare(password, user.password))) {
       const accessToken = jwt.sign(
@@ -84,9 +91,15 @@ exports.login = async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(401).json({
-      status: 'Fail',
-      message: err.message,
-    });
+    // res.status(401).json({
+    //   status: 'Fail',
+    //   message: err.message,
+    // });
+
+    // If the password doesn't match, send an authentication error response
+return res.status(401).json({
+  status: 'Fail',
+  message: 'Authentication failed. Incorrect password.',
+});
   }
 };
