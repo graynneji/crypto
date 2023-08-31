@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "build" : "npm i"
   },
   "author": "Ukaegbu Gray",
   "license": "ISC",
