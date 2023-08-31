@@ -23,11 +23,20 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log('logged')
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+
+    }
+    const config ={
+      headers: headers,
+    }
     try {
       // const res = await axios.post("http://localhost:9000/api/v1/auth/login", {
       const res = await axios.post("https://crypto-gkdk.onrender.com/api/v1/auth/login", {
         email,
         password,
+        config
       });
       
       dispatch(login({accessToken: res.data.accessToken, userId: res.data.user._id}))
