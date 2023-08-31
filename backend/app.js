@@ -9,7 +9,8 @@ const cors = require('cors');
 const app = express();
 //middlewares
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'https://crypto-ig66.vercel.app' }));
+// app.use(cors({ origin: 'http://localhost:3000' }));
 
 //Routes
 app.use('/api/v1/auth', authRoute);

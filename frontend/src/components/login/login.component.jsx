@@ -24,7 +24,8 @@ const Login = () => {
     e.preventDefault();
     console.log('logged')
     try {
-      const res = await axios.post("http://localhost:9000/api/v1/auth/login", {
+      // const res = await axios.post("http://localhost:9000/api/v1/auth/login", {
+      const res = await axios.post("https://crypto-gkdk.onrender.com/api/v1/auth/login", {
         email,
         password,
       });

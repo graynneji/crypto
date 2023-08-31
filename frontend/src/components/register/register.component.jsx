@@ -22,7 +22,8 @@ const Register =()=>{
   const handleSubmit = async (event)=>{
     event.preventDefault()
   try {
-    const res = await axios.post("http://localhost:9000/api/v1/auth/register", {
+    // const res = await axios.post("http://localhost:9000/api/v1/auth/register", {
+    const res = await axios.post("https://crypto-gkdk.onrender.com/api/v1/auth/register", {
     firstName,
     lastName,  
     email,
