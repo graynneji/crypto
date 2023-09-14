@@ -8,12 +8,15 @@
 
   /* margin: 0.2rem 0rem 0rem 0rem; */
   border-radius: 0.5rem;
+  /* margin-bottom: 2rem; */
   /* background-color: rgba(153, 153, 153, 0.114); */
 }
 .market-header {
   display: flex;
   margin-bottom: 2rem;
   justify-content: space-between;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 .coin-symbol-name {
   display: flex;
@@ -28,18 +31,52 @@
 }
 .coin-name {
   font-weight: 700;
-  font-size: 1.3rem;
-  color: #444444e6;
+  font-size: 1.5rem;
+  color: #000;
   letter-spacing: 0.02rem;
 }
 .coin-symbol {
-  color: rgba(153, 153, 153, 0.765);
+  color: #444;
+  font-size: 1.3rem;
 }
 .coin-price {
-  font-weight: 200;
+  font-weight: 500;
+  color: #000;
 }
 .fx {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+.price-percentage{
+  display: flex;
+  flex-direction: column;
+}
+
+.percentage{
+  align-self: end;
+  color: green;
+  font-size: 1.2rem;
+}
+/* .widget{
+  height: 30rem;
+} */
+
+
+.view-more{
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */justify-content: end;
+  color:#44441D ;
+  font-size: 1.5rem;
+  text-align: right;
+  font-weight: 600;
+
+}
+.graph{
+  background-color: #999999d3;
+  border-radius: 1rem;
 }

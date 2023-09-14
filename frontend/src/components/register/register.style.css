@@ -18,11 +18,13 @@
   .terms-and-privacy{
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
+    /* text-align: left; */
   }
   .terms-and-privacy span{
     font-weight: 700;
     text-decoration: underline;
   }
   .gxtrade p{
-    color: #C07F00;
+    color: #44441D;
+    font-weight: 700;
   }

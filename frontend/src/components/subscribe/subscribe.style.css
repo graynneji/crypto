@@ -1,0 +1,75 @@
+.sub-details{
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    border: .001rem solid #4444447b;
+}
+.subscription-card{
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+.subscription-card p{
+ font-weight: 500;
+ font-size: 1.5rem;
+}
+.percentage-subscribe{
+    font-size: 6rem;
+    font-weight: 800;
+    grid-column: -1;
+    grid-row: 2;
+}
+.min-amount{
+    font-size: 2rem;
+    font-weight: 300;
+    grid-row: 3;
+    grid-column: 1;
+    /* display: flex;
+    justify-content: space-between; */
+   
+}
+.min-digits{
+grid-column: 4;
+grid-row: 3;
+font-size: 2rem;
+font-weight: 600;
+
+
+}
+.min-digits p{
+grid-column: 4;
+grid-row: 3;
+font-size: 2rem;
+font-weight: 300;
+/* text-align: right; */
+
+}
+
+
+.plan{
+    grid-column: -1;
+    place-self: end;
+  padding: .5rem 1rem .5rem 1rem;
+  border-radius: 2rem;
+  color:green ;
+  font-weight: 800;
+    background-color: rgba(0, 128, 0, 0.318);
+}
+/* .btn{
+    min-width: 12rem;
+    height: 4rem;
+    place-self: end;
+    border-radius: 5rem;
+    background-color: green;
+    border: none;
+color: #fff;
+font-size: 1.5rem;
+font-weight: 700;
+} */
+.feautures{
+    grid-row: 5;
+    font-size: 1rem !important;
+    grid-column: 1/5;
+    font-weight: 600!important;
+    color: #4444447b;
+}

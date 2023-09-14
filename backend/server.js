@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const app = require('./app');
 const axios = require('axios');
 const https = require('https');
+const Trade = require("./models/tradeModel")
 
 dotenv.config({ path: './config.env' });
 // Increase the maximum number of listeners for the EventEmitter
@@ -19,7 +20,7 @@ const io = socketIo(server, {
   cors: {
      
     origin: '*', // Adjust this to your frontend's domain for production
-    // origin: 'http://127.0.0.1:3000', // Adjust this to your frontend's domain for production
+    origin: 'http://localhost:3000', // Adjust this to your frontend's domain for production
   },
 });
 
@@ -120,46 +121,93 @@ const tradingPairs = [
   { symbol: 'chzusdt', name: 'Chiliz' },
 ];
 
-// const dataObject = [];
-// // Create WebSocket connections for each trading pair
-// const websockets = tradingPairs.map((pair) => {
-//   try {
-//     console.log(pair);
-//     const ws = new WebSocket(
-//       `wss://stream.binance.com:9443/ws/${pair.symbol}@trade`
-//     );
+const dataObject = [];
 
-//     ws.on('message', (data) => {
-//       const tradeUpdate = JSON.parse(data);
-//       const symbol = tradeUpdate.s.toLowerCase();
-//       const price = parseFloat(tradeUpdate.p);
+// Create WebSocket connections for each trading pair
+const websockets = tradingPairs.map((pair) => {
+  try {
+    console.log(pair);
+    const ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${pair.symbol}@trade`
+    );
 
-//       // Extract the name of the currency (without "usdt")
-//       const currency = symbol.replace('usdt', '');
+    ws.on('message', (data) => {
+      const tradeUpdate = JSON.parse(data);
+      const symbol = tradeUpdate.s.toLowerCase();
+      const price = parseFloat(tradeUpdate.p);
 
-//       const currencyInfo = {
-//         name: pair.name,
-//         symbol: currency,
-//         price: price,
-//       };
+      // Extract the name of the currency (without "usdt")
+      const currency = symbol.replace('usdt', '');
 
-//       dataObject[symbol] = currencyInfo;
+      ///////////////////////////////////////////////////////
+      if (dataObject[symbol]) {
+        const previousPrice = dataObject[symbol].price;
+        const percentageChange = ((price - previousPrice) / previousPrice) * 100;
 
-//       const dataArray = Object.values(dataObject);
+        // Update the price and percentage change in the dataObject
+        dataObject[symbol] = {
+          name: pair.name,
+          symbol: currency,
+          price: price,
+          percentageChange: (parseFloat(dataObject[symbol].percentageChange) + percentageChange).toFixed(2),
+        };
+      } else {
+        // Initialize the dataObject entry with default values
+        dataObject[symbol] = {
+          name: pair.name,
+          symbol: currency,
+          price: price,
+          percentageChange: +0.00, // Default to 0% if no previous data
+        };
+      }
+      const dataArray = Object.values(dataObject);
 
-//       io.emit('crypto', dataArray);
-//     });
+      io.emit('crypto', dataArray);
+    });
 
-//     // return ws;
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// });
+    return ws;
+  } catch (err) {
+    console.log(err.message);
+  }
+
+      //////////////////////////////////////////////////////
+
+  //     const currencyInfo = {
+  //       name: pair.name,
+  //       symbol: currency,
+  //       price: price,
+  //       percentageChange: percentageChange.toFixed(2),
+  //     };
+
+  //     dataObject[symbol] = currencyInfo;
+
+  //     const dataArray = Object.values(dataObject);
+
+  //     io.emit('crypto', dataArray);
+  //   });
+
+  //   return ws;
+  // } catch (err) {
+  //   console.log(err.message);
+  // }
+});
 // Handle application exit
 process.on('SIGINT', () => {
   websockets.forEach((ws) => ws.close());
   process.exit();
 });
+
+//Emit dividends
+const dividend = async ()=>{
+  const dividendsAmount = await Trade.find();
+  console.log(dividendsAmount)
+  if(dividendsAmount){
+    io.emit("dividend", dividendsAmount)
+    
+  }
+}
+
+
 
 const DB = process.env.DATABASE;
 mongoose

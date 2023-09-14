@@ -16,7 +16,8 @@
 }
 .forget{
   font-size: 1.5rem;
-  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  text-align: left;
 }
 .google-inside{
   display: flex;

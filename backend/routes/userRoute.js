@@ -24,6 +24,6 @@ router.route('/').get(verifyTokenAndAdmin, userController.getAllUsers);
 router
   .route('/:id')
   .patch(verifyTokenAndAuthorization, userController.update)
-  .get(userController.getAUser);
+  .get(verifyToken, userController.getAUser);
 
 module.exports = router;

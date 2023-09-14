@@ -6,7 +6,6 @@ import Nav from "../../components/nav/nav.component";
 export default function Home() {
   return (
     <div className="home-container">
-      <Header color="#444" />
       <p className="welcome">Welcome to G-XTrade</p>
       <div className="auth-btn">
         <Button type={"button"} buttonType={"login"}>
@@ -17,7 +16,7 @@ export default function Home() {
         </Button>
       </div>
       {/* <Market /> */}
-      <Nav />
+      {/* <Nav /> */}
     </div>
   );
 }

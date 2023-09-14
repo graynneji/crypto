@@ -1,0 +1,23 @@
+.trade-dashboard{
+    width: 95%;
+    margin: 0 auto;
+  
+    /* box-shadow: 0 0 4.5rem rgba(0, 0, 0, 0.09); */
+    border-radius: 1rem;
+    padding: 2rem 0rem;
+    /* align-items: center;
+    justify-content: center; */
+    /* place-items: center; */
+    /* row-gap: 1.5rem; */
+    margin-bottom: 1.9rem;
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+}
+
+.trade-header{
+    font-size: 3rem;
+    font-weight: 600;
+}

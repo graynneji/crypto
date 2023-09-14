@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Trade = require('../models/tradeModel');
 
 //Get Users
 exports.getAllUsers = async (req, res) => {
@@ -12,20 +13,43 @@ exports.getAllUsers = async (req, res) => {
 
 //Get user
 exports.getAUser = async (req, res) => {
-  const user = await User.findById(req.params.id);
-  //if no user
-  if(!user){
-    res.status(400).json({
-      status: 'Fail',
-      message: 'You are not logged in!'
-    })
-  }
-  const { password, ...others } = user._doc;
-  res.status(200).json({
-    status: 'Success',
-    others,
-  });
-};
+
+    try {
+      const userId = req.params.id;
+  
+      // Fetch the user by their ID
+      const user = await User.findById(userId);
+  
+      // If no user is found, return an error response
+      if (!user) {
+        return res.status(400).json({
+          status: 'Fail',
+          message: 'User not found!',
+        });
+      }
+  
+      // Fetch the trade records associated with the user's ID
+      const trades = await Trade.find({ userId: userId });
+  
+      // Create a response object that includes user data and trade data
+      const response = {
+        status: 'Success',
+        user: {
+          ...user._doc, // Include user data
+        },
+        trade: trades, // Include trade data
+      };
+  
+      res.status(200).json(response);
+    } catch (error) {
+      console.error('Error retrieving user and trade data:', error);
+      res.status(500).json({
+        status: 'Error',
+        message: 'Internal Server Error',
+      });
+    }
+  };
+  
 //Update user
 exports.update = async (req, res) => {
   try {

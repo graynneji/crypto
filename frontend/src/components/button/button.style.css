@@ -1,6 +1,6 @@
 .button-container {
   /* min-width: 165px; */
-  /* width: 50%; */
+  width: 100%;
   /* height: 50px; */
   letter-spacing: 0.7px;
 
@@ -15,6 +15,7 @@
   cursor: pointer;
   display: inline-block;
   justify-content: center;
+  align-items: center;
   text-align: center;
   border-radius: .3rem;
 }
@@ -33,10 +34,11 @@
 height: 5rem;
   /* border-radius: 1rem; */
   background: none;
-  color: #222;
+  color: #fff;
+  /* color: #222; */
   /* border: 1px solid black; */
   /* background-color: #C07F00; */
-  background-color: #c08000a8;
+  background-color: #44441D;
   margin-bottom: 1.5rem;
 }
 .button-container.register {
@@ -47,9 +49,9 @@ height: 5rem;
 height: 5rem;
   /* border-radius: 1rem; */
   background: none;
-  color: #222;
+  color: #fff;
   /* border: 1px solid black; */
-  background-color: #c08000a8;
+  background-color: #44441D;
   margin-bottom: 1.5rem;
 }
 .button-container.google-sign-in {
@@ -66,7 +68,36 @@ height: 5rem;
     border: none;
     border: 1px solid black;
   }
+.deposit{
+/* width: 100%; */
+background-color: #44441D;
+/* background-color: #c08000a8; */
+padding: .8rem 1.2rem .8rem 1.2rem;
+font-size: 1.3rem;
+display: flex;
+align-items: center;
+gap: 1rem;
+color: #fff;
+}
+.withdrawal{
+  background-color: #77777774;
+padding: .8rem 1.2rem .8rem 1.2rem;
+font-size: 1.3rem;
+display: flex;
+align-items: center;
+gap: 1rem;
+color: black;
+}
+.trade{
+  background-color: #77777774;
+  padding: .8rem 1.2rem .8rem 1.2rem;
+  font-size: 1.3rem;
+  display: flex;
 
+  align-items: center;
+  gap: 1rem;
+  color: black;
+}
 /* .button-container.inverted {
 
     background: none;
@@ -84,3 +115,16 @@ height: 5rem;
     background-color: #d87d4a;
     border: none;
   } */
+.subscribe{
+
+    min-width: 12rem;
+    height: 5rem;
+    place-self: end;
+    border-radius: 5rem;
+    background-color: rgba(0, 128, 0, 0.742);
+    border: none;
+color: #fff;
+font-size: 1.5rem;
+font-weight: 700;
+
+}
