@@ -1,0 +1,98 @@
+.earn{
+    background-color:#99999932 ;
+    /* background-color:#9999994a ; */
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.173);
+    margin: 1.5rem 0rem 1.5rem 0rem ;
+
+
+}
+.earn-content{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr ;
+    gap: 1rem;
+    padding: 1rem;
+}
+.head-equity{
+place-self: center;
+grid-column: 2;
+font-size: 1.5rem;
+}
+.dividends{
+    grid-row: 2;
+    grid-column: 2;
+    font-size: 2rem;
+    font-weight: 600;
+    place-self: center;
+    color: green;
+}
+.plan-container{
+    background-color: rgb(0, 128, 0);
+    /* width: 100%; */
+    padding: .5rem .8rem .5rem .8rem ;
+    border-radius: 2rem;
+    color: greenyellow;
+    font-weight: 600;
+ grid-column: 3;
+ grid-row: 1;
+    text-align: center;
+    place-self: end;
+
+}
+.start-date{
+    grid-column: 1;
+    font-size: 1.5rem;
+    place-self: center;
+    font-weight: 300;
+    color: green;
+}
+.amount-of-trade{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    color: #777;
+    grid-row: 1;
+    /* grid-column: 1; */
+}
+.trade-status{
+    place-self: end;
+    color: green;
+    text-transform: capitalize;
+    grid-column: 3;
+    grid-row: 3;
+   
+}
+.earn-header p{
+    font-size: 3rem;
+    
+}
+.earn-header {
+    margin-bottom: 3rem;
+    
+}
+.total-earnings{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #777;
+    
+}
+.total-earnings-amount{
+    color: #222;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+}
+.gold{
+    background-color: red;
+    color: #fff;
+}
+.bronze{
+    background-color: black;
+    color: #fff;
+}
+.header-earn{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}

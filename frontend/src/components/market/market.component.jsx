@@ -7,7 +7,7 @@ import numeral from "numeral";
 import { Line } from "react-chartjs-2";
 import { options } from "../chart/chart.component";
 import { data } from "../chart/chart.component";
-import { ReactComponent as Bitcoin } from "../../assets/icons8-bitcoin.svg";
+import { ReactComponent as Bitcoin } from "../../assets/icons8-bitcoin (1).svg";
 
 import "./market.style.css";
 
@@ -84,17 +84,31 @@ import "./market.style.css";
 // export default memo(TradingViewWidget);
 
 const Market = ({ datas }) => {
+  const PriceBTC = datas
+    .filter((data) => data.symbol === "btc")
+    .map((data) => data.price);
+
+  const formattedPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD", // Change this to the appropriate currency code
+  }).format(PriceBTC);
   console.log(datas);
   return (
     <>
       <div className="market-container">
         {/* <TradingViewWidget /> */}
-        {/* <div className="graph">
+        <div className="graph">
           <div className="title-btc-graph">
-            <Bitcoin style={{ fontSize: "100rem" }} />
-            <p>BTC/USD</p>
-          </div> */}
-        <Line options={options} data={data} />;{/* </div> */}
+            <Bitcoin fill="#F7931A" width="35" height="35" />
+            <div>
+              <p id="btc-usd">BTC/USD</p>
+              <p>
+                BTC Price: <span>{formattedPrice}</span>
+              </p>
+            </div>
+          </div>
+          <Line options={options} data={data} />;
+        </div>
         <div className="fx">
           <p>Wishlist</p>
           <p>Coin</p>

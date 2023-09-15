@@ -136,3 +136,7 @@ height: 5rem;
     flex-direction: column;
     margin-bottom: 3rem;
 }
+.actions Link{
+    text-decoration: none;
+    font-size: 40rem;
+}

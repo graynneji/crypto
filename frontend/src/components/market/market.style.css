@@ -77,6 +77,17 @@
 
 }
 .graph{
-  background-color: #999999d3;
+  background-color: #99999914;
   border-radius: 1rem;
+}
+.title-btc-graph{
+  display: flex;
+  justify-content:first baseline;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: .5rem;
+}
+#btc-usd{
+  font-weight: 700;
+
 }

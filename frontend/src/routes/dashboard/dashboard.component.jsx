@@ -22,13 +22,12 @@ const Dashboard = () => {
   const cryptoData = [10, 12, 15, 14, 16, 18, 20, 22, 25, 24];
 
   const [dividend, setDividend] = useState(null);
-  // localStorage.removeItem("userData");
+
   const dispatch = useDispatch();
   // const data = useSelector((state) => state.auth.user);
-  const user = useSelector(selectCurrentUser);
-  const accessToken = useSelector(selectCurrentToken);
-  localStorage.setItem("id", user);
-  localStorage.setItem("token", accessToken);
+  // const user = useSelector(selectCurrentUser);
+  // const accessToken = useSelector(selectCurrentToken);
+
   const [datas, setDatas] = useState([]);
   const [error, setError] = useState("");
   const [userData, setUserData] = useState(null);
@@ -41,23 +40,32 @@ const Dashboard = () => {
   const initialPriceRef = useRef(initialPrice);
   //NEWWW CONSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-  // useEffect(() => {
-  //   localStorage.removeItem("user");
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("userData");
-  // }, []);
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      // If data is found in localStorage, parse and set it in the state
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("id");
-    console.log(token, userId);
-    const handleFetch = async (userId, token) => {
+    const storedUser = localStorage.getItem("user");
+    const user = JSON.parse(storedUser);
+    console.log("User from local storage:", user);
+    // const { accessToken, others: { _id } } = user;
+    const accessToken = user?.accessToken;
+    const userId = user?.others?._id;
+    console.log(user);
+    console.log("AccessToken:" + accessToken);
+    console.log("userId:" + userId);
+    // console.log(token, userId);
+    const handleFetch = async (accessToken, userId) => {
       try {
         const res = await axios.get(
           `http://localhost:9000/api/v1/users/${userId}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -65,22 +73,16 @@ const Dashboard = () => {
         dispatch(userInfo(res.data));
         console.log(res.data);
         localStorage.setItem("userData", JSON.stringify(res.data));
+        // const storedUserData = localStorage.getItem("userData");
+        // setUserData(JSON.parse(storedUserData));
       } catch (err) {
         setError(err.message);
         console.error(err);
       }
     };
 
-    // Check if there is user data in localStorage
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      // If data is found in localStorage, parse and set it in the state
-      setUserData(JSON.parse(storedUserData));
-    } else {
-      // If no data is found, fetch it from the server
-      handleFetch(userId, token);
-    }
-  }, []);
+    handleFetch(accessToken, userId);
+  }, [userData, dispatch]);
 
   //OLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
@@ -122,13 +124,19 @@ const Dashboard = () => {
   //   const welcome = userdata ? `welcome ${data?.others?.firstName}!` : `welcome`;
   const welcome = `${userData?.user?.firstName}`;
   const UID = `${userData?.user?._id?.slice(0, 9)}`;
+  const formattedAmount = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD", // Change this to the appropriate currency code
+  }).format(userData?.user?.funds?.available);
 
   const content = (
     <section className="dashboard-container">
       <div className="actions">
-        <Button buttonType="deposit">Deposit</Button>
-        <Button buttonType="withdrawal">Withdrwal</Button>
-        <Button buttonType="trade">Trade</Button>
+        <Link to="/deposit">
+          <Link buttonType="deposit">Deposit</Link>
+        </Link>
+        <Link buttonType="withdrawal">Withdrwal</Link>
+        <Link buttonType="trade">Trade</Link>
       </div>
       <header className="grid-header-dashboard">
         <p className="uid">UID: {UID.toUpperCase()}</p>
@@ -150,45 +158,54 @@ const Dashboard = () => {
           <p className="btc-price">0.00384682 BTC</p>
           {/* <p className="btc-price">{userData?.others?.funds?.available} BTC</p> */}
           {/* <p className="price">$ {userData?.others?.funds?.available}</p> */}
-          <p className="price">$ 50,000.98</p>
+          <p className="price">{formattedAmount}</p>
         </div>
       </header>
       <div className="icons-menu">
-        <div className="icon-container">
-          <div className="icon">
-            <SavingsRoundedIcon style={{ fontSize: "3rem" }} />
-          </div>
-          <div>
-            <p className="p-icon-name">Earn</p>
-          </div>
-        </div>
+        <Link to="/deposit">
+          <div className="icon-container">
+            <div className="icon">
+              <SavingsRoundedIcon style={{ fontSize: "3rem" }} />
+            </div>
 
-        <div className="icon-container">
-          <div className="icon">
-            <MoveUpRoundedIcon style={{ fontSize: "3rem" }} />
+            <div>
+              <p className="p-icon-name">Earn</p>
+            </div>
           </div>
-          <div>
-            <p className="p-icon-name">Referal</p>
-          </div>
-        </div>
+        </Link>
 
-        <div className="icon-container">
-          <div className="icon">
-            <AssessmentRoundedIcon style={{ fontSize: "3rem" }} />
+        <Link to="/deposit">
+          <div className="icon-container">
+            <div className="icon">
+              <MoveUpRoundedIcon style={{ fontSize: "3rem" }} />
+            </div>
+            <div>
+              <p className="p-icon-name">Referal</p>
+            </div>
           </div>
-          <div>
-            <p className="p-icon-name">Market</p>
-          </div>
-        </div>
+        </Link>
 
-        <div className="icon-container">
-          <div className="icon">
-            <CandlestickChartRoundedIcon style={{ fontSize: "3rem" }} />
+        <Link to="/deposit">
+          <div className="icon-container">
+            <div className="icon">
+              <AssessmentRoundedIcon style={{ fontSize: "3rem" }} />
+            </div>
+            <div>
+              <p className="p-icon-name">Market</p>
+            </div>
           </div>
-          <div>
-            <p className="p-icon-name">Trade</p>
+        </Link>
+
+        <Link to="/deposit">
+          <div className="icon-container">
+            <div className="icon">
+              <CandlestickChartRoundedIcon style={{ fontSize: "3rem" }} />
+            </div>
+            <div>
+              <p className="p-icon-name">Trade</p>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
 
       <Market datas={datas} />

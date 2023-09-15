@@ -5,7 +5,7 @@ const moment = require('moment');
 
 exports.createTrade = async (req, res) => {
   try {
-    const userId = req.user.id;
+    // const userId = req.user.id;
     const email = req.user.email;
     const { plan, amount } = req.body;
     const reqAmount = plans[plan].investmentAmount;
@@ -42,7 +42,7 @@ exports.createTrade = async (req, res) => {
       const { roi, dividendsPercentage, features } = planDetails;
 
       const trade = await Trade.create({
-        userId,
+        // userId,
         email,
         roi,
         plan,

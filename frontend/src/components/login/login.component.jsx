@@ -49,6 +49,9 @@ const Login = () => {
     try {
       const userdata = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...userdata, email }));
+      console.log(userdata);
+      localStorage.setItem("user", JSON.stringify(userdata));
+      console.log(userdata?.others?._id, userdata?.accessToken);
       setFormFields(defaultFormFields);
       navigate("/dashboard");
     } catch (err) {

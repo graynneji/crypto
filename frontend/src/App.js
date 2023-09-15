@@ -10,6 +10,7 @@ import Header from './components/header/header.component'
 import Dashboard from "./routes/dashboard/dashboard.component";
 import RequireAuth from "./utils/requireAuth";
 import Trade from './routes/trade/trade.component'
+import Earn from "./routes/earn/earn.component"
 // import useSocket from "./utils/socket";
 function App() {
   // const datas = useSocket();
@@ -23,6 +24,7 @@ function App() {
           {/* <Route path="/trade" element={<Trade />} /> */}
           <Route path="/trade" element={<Trade />}/>
           <Route path="/deposit" element={<Deposit />}/>
+          <Route path="/earn" element={<Earn />}/>
 
           {/* protected route */}
             <Route  element={<RequireAuth />} >

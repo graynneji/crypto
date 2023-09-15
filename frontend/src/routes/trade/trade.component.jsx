@@ -26,7 +26,7 @@ const Trade = () => {
           minimumDigit="0.009345 BTC"
           inUsd="$ 1,000"
         />
-        <Subscribe
+        {/* <Subscribe
           percentage="24%"
           plan="Bronze"
           minimumDigit="1.345029 BTC"
@@ -37,7 +37,7 @@ const Trade = () => {
           plan="Gold"
           minimumDigit="1.345029 BTC"
           inUsd="$ 10,000"
-        />
+        /> */}
       </div>
     </>
   );

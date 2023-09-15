@@ -12,22 +12,16 @@ const Auth = () => {
   const isToggleLogReg = useSelector((state) => state.auth.isToggleLogReg);
   const data = useSelector((state) => state.auth.user);
   // const data = localStorage.getItem("accessToken");
-  const userId = localStorage.getItem("id");
+  const userData = localStorage.getItem("userData");
   // const userId = null;
 
-  // const [toggleLogReg, setToggleLogReg] = useState(null)
-
-  // const handleToggle =()=>{
-  //   setToggleLogReg(!toggleLogReg)
-  // }
-
-  console.log(userId);
+  console.log(userData);
   useEffect(() => {
     // if (data) {
-    if (userId) {
+    if (userData) {
       navigate("/dashboard");
     }
-  }, [userId, navigate]);
+  }, [userData, navigate]);
   console.log(typeof navigate);
   return (
     <div className="auth-container">

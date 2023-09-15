@@ -16,6 +16,7 @@ exports.getAUser = async (req, res) => {
 
     try {
       const userId = req.params.id;
+      const email = req.user.email
   
       // Fetch the user by their ID
       const user = await User.findById(userId);
@@ -29,7 +30,8 @@ exports.getAUser = async (req, res) => {
       }
   
       // Fetch the trade records associated with the user's ID
-      const trades = await Trade.find({ userId: userId });
+      const trades = await Trade.find({ email: email });
+      // const trades = await Trade.find({ userId: userId });
   
       // Create a response object that includes user data and trade data
       const response = {

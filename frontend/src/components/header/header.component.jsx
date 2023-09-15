@@ -21,22 +21,22 @@ export default function Header({ color }) {
       <header className="header">
         {token ? (
           <div className="header-side">
-            <AccountCircleIcon style={{ fontSize: "2.5rem" }} />
+            <AccountCircleIcon style={{ fontSize: "2.7rem" }} />
             <Search />
             {/* <Button type="button" buttonType="deposit">
                 <SystemUpdateAltIcon /> Deposit
               </Button> */}
-            <BiSupport style={{ fontSize: "2rem" }} />
+            <BiSupport style={{ fontSize: "2.5rem" }} />
 
             <div className="notification-icon">
               <NotificationsNoneRoundedIcon
                 // className="icon"
-                style={{ fontSize: "2rem" }}
+                style={{ fontSize: "2.5rem" }}
               />
               {count > 0 && <span className="badge">{count}</span>}
             </div>
 
-            <MenuIcon style={{ fontSize: "2.5rem" }} />
+            <MenuIcon style={{ fontSize: "2.7rem" }} />
           </div>
         ) : (
           <div className="logo">

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const tradeSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  // userId: { type: String, required: true, unique: false },
   plan: { type: String, required: [true, 'Plan is required'] },
   email: { type: String, required: [true, 'Email is required'] },
   // startDate:{type: },
