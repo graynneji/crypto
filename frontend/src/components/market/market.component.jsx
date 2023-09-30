@@ -92,7 +92,6 @@ const Market = ({ datas }) => {
     style: "currency",
     currency: "USD", // Change this to the appropriate currency code
   }).format(PriceBTC);
-  console.log(datas);
   return (
     <>
       <div className="market-container">
@@ -101,9 +100,17 @@ const Market = ({ datas }) => {
           <div className="title-btc-graph">
             <Bitcoin fill="#F7931A" width="35" height="35" />
             <div>
-              <p id="btc-usd">BTC/USD</p>
-              <p>
-                BTC Price: <span>{formattedPrice}</span>
+              <p id="btc-usd">Bitcoin</p>
+              <p className="usd-usd">
+                <span>{formattedPrice}</span> USD
+              </p>
+              <p
+                className="coin-name percentage"
+                style={{
+                  color: data?.percentageChange < 0 ? "red" : "green",
+                }}
+              >
+                {data?.percentageChange}
               </p>
             </div>
           </div>

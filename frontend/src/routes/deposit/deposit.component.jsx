@@ -6,12 +6,18 @@ import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { BiSolidCopy } from "react-icons/bi";
 import { FcCursor } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 const Deposit = () => {
   const [btcAddress, setBtcAddress] = useState(
     "13op65W7eJiJhUMQB7PvMta4a5e4iavLfd"
   );
-  const [copy, setCopy] = useState(false);
 
+  const [copy, setCopy] = useState(false);
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
   const handleCopyClick = () => {
     // Create a textarea element to hold the address
     const textArea = document.createElement("textarea");
@@ -33,6 +39,7 @@ const Deposit = () => {
         <div className="back-help">
           <KeyboardBackspaceIcon
             style={{ fontSize: "2.5rem", color: "#444" }}
+            onClick={handleBack}
           />
           <LiveHelpIcon style={{ fontSize: "2.5rem", color: "#444" }} />
         </div>

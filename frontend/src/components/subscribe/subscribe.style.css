@@ -1,13 +1,17 @@
 .sub-details{
     /* display: grid;
     grid-template-columns: 1fr 1fr; */
-    border: .001rem solid #4444447b;
+    /* border: .001rem solid #4444447b; */
+    border-radius: 1rem;
 }
 .subscription-card{
-    padding: 3rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    background-color: #7d7c7c0d;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.173);
+
 }
 .subscription-card p{
  font-weight: 500;
@@ -18,6 +22,7 @@
     font-weight: 800;
     grid-column: -1;
     grid-row: 2;
+    color: green;
 }
 .min-amount{
     font-size: 2rem;
@@ -26,6 +31,8 @@
     grid-column: 1;
     /* display: flex;
     justify-content: space-between; */
+
+
    
 }
 .min-digits{
@@ -33,6 +40,7 @@ grid-column: 4;
 grid-row: 3;
 font-size: 2rem;
 font-weight: 600;
+color: green;
 
 
 }
@@ -72,4 +80,14 @@ font-weight: 700;
     grid-column: 1/5;
     font-weight: 600!important;
     color: #4444447b;
+    text-align: center;
+}
+
+.gold{
+    background-color: red;
+    color: #fff;
+}
+.bronze{
+    background-color: black;
+    color: #fff;
 }

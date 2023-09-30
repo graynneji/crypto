@@ -58,7 +58,7 @@
 
 .percentage{
   align-self: end;
-  color: green;
+  color: #444;
   font-size: 1.2rem;
 }
 /* .widget{
@@ -78,7 +78,10 @@
 }
 .graph{
   background-color: #99999914;
-  border-radius: 1rem;
+ 
+  /* box-shadow: 0 0 0.45rem #222; */
+/* border: .2rem solid #999; */
+
 }
 .title-btc-graph{
   display: flex;
@@ -89,5 +92,15 @@
 }
 #btc-usd{
   font-weight: 700;
+  font-size: 1.8rem;
+color: #444;
+}
+.usd-usd{
+  font-weight: 600;
 
+}
+.usd-usd span{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
 }

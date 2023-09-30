@@ -12,7 +12,7 @@ const Auth = () => {
   const isToggleLogReg = useSelector((state) => state.auth.isToggleLogReg);
   const data = useSelector((state) => state.auth.user);
   // const data = localStorage.getItem("accessToken");
-  const userData = localStorage.getItem("userData");
+  const userData = sessionStorage.getItem("userData");
   // const userId = null;
 
   console.log(userData);
@@ -26,12 +26,12 @@ const Auth = () => {
   return (
     <div className="auth-container">
       <div className="verify-address">
-        <LockIcon className="m-color" fontSize="medium" />
+        <LockIcon className="m-color" fontSize="medium" />|
         <p>
-          URL Verification: <span>https://</span>account.gxtrade.com
+          <span> https:</span>//account.gxtrade.com/ ...
         </p>
       </div>
-      {isToggleLogReg ? <Login /> : <Register />}
+      {isToggleLogReg ? <Register /> : <Login />}
     </div>
   );
 };

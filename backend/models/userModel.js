@@ -28,8 +28,8 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     funds: {
-      available: { type: Number, default: 0 },
-      reserved: { type: Number, default: 0 },
+      available: { type: Number, default: 0.00},
+      reserved: { type: Number, default: 0.00},
     },
     clientBrowser: {
       type: String,

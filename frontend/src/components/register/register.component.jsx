@@ -5,6 +5,9 @@ import Button from "../../components/button/button.component";
 import "./register.style.css";
 import { FcGoogle } from "react-icons/fc";
 import LogRegToggle from "../logRegToggle/logRegToggle.component";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setCredentials } from "../../utils/authActions";
 
 const defaultFormFields = {
   firstName: "",
@@ -17,6 +20,8 @@ const Register = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [error, setError] = useState("");
   const { firstName, lastName, email, password, confirmPassword } = formFields;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,11 +45,21 @@ const Register = () => {
         }
       );
       console.log(res.data);
+      const userdata = res.data;
+      console.log(userdata);
+      dispatch(setCredentials({ userdata }));
+      sessionStorage.setItem("user", JSON.stringify(userdata));
       setFormFields(defaultFormFields);
+      if (userdata) {
+        navigate("/dashboard");
+        console.log("Testing navigate" + userdata);
+      }
     } catch (err) {
       if (err.response) {
         console.log(err.response.data.message);
         setError(err.response.data.message);
+      } else {
+        setError("An error occurred. Please try again.");
       }
     }
   };
@@ -52,7 +67,7 @@ const Register = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-    console.log(formFields);
+
     setError("");
   };
   return (

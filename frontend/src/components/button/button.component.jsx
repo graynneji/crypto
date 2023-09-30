@@ -12,6 +12,8 @@ const BUTTON_TYPE_CLASSES = {
   mainregister: "mainRegister",
   trade: "trade",
   subscribe: "subscribe",
+  move: "move",
+  start: "starts",
 };
 
 const Button = ({ children, buttonType, ...otherProps }) => {

@@ -1,8 +1,6 @@
-// import logo from "./logo.svg";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Deposit from "./routes/deposit/deposit.component"
-// import auth from "./components/login.component";
 import Auth from "./routes/authentication/authentication.component";
 import Layout from "./components/layout/layout.component";
 import Home from "./routes/home/home.component";
@@ -11,27 +9,29 @@ import Dashboard from "./routes/dashboard/dashboard.component";
 import RequireAuth from "./utils/requireAuth";
 import Trade from './routes/trade/trade.component'
 import Earn from "./routes/earn/earn.component"
-// import useSocket from "./utils/socket";
+import Start from "./routes/start/start.component"
+
 function App() {
-  // const datas = useSocket();
+
   return (
   
     <Layout>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route index element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-          {/* <Route path="/trade" element={<Trade />} /> */}
-          <Route path="/trade" element={<Trade />}/>
-          <Route path="/deposit" element={<Deposit />}/>
-          <Route path="/earn" element={<Earn />}/>
+        <Route index element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+      
 
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/earn" element={<Earn />}/>
+          <Route path="/start" element={<Start/>}/>
+          <Route path="/trade" element={<Trade />}/>
           {/* protected route */}
-            <Route  element={<RequireAuth />} >
-            <Route path="/dashboard" element={<Dashboard />} />
-            {/* <Route path="/trade" element={<Trade />} /> */}
+          <Route  element={<RequireAuth />} >
+          <Route path="/deposit" element={<Deposit />}/>
+      
           </Route>
-        </Route>
+          </Route>
       </Routes>
     </Layout>
  

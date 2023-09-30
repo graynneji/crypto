@@ -17,11 +17,11 @@
 
     margin-bottom: 3rem;
     row-gap: 2rem;
-    box-shadow: 0 0 4.5rem #44441d51;
+    box-shadow: 12 0 0.5rem #444;
+    /* box-shadow: 0 0 4.5rem #222222; */
 
-    /* box-shadow: 0 0 4.5rem #44441d84; */
-    /* background-color: #44444414; */
-    background-color: #44441d ;
+    
+    background-color: #222222 ;
     padding: 1.5rem 1.2rem 1.5rem 1.2rem ;
     border-radius: 1rem ;
     position: relative ;
@@ -77,6 +77,7 @@
     gap: 3rem;
     text-align: center;
     margin-bottom: 3rem;
+
     /* padding: .8rem 1.2rem .8rem 1.2rem; */
 }
 .h1{
@@ -118,16 +119,19 @@ height: 5rem;
     justify-content: center;
     width: 5rem;
     height: 5rem;
-    background-color: #44444437;
+    background-color: #fff;
     border-radius: 50%;
-    color: #44441D;
+    /* color: #01497c; */
+    color: #222222;
     /* box-shadow: 0 0 4.5rem #44441d31; */
-    box-shadow: 0 0 4.5rem #44441d51;
+    box-shadow: 0 0 0.5rem #22222278;
 
 }
 .p-icon-name{
     margin-top: 0.5rem; /* Add margin to separate the <p> from the icon */
     text-align: center;
+    font-size: 1.5rem;
+  
     
 }
 
@@ -135,8 +139,15 @@ height: 5rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
+    justify-content: center;
+    align-items: center;
 }
 .actions Link{
     text-decoration: none;
     font-size: 40rem;
+}
+.eye-price-show{
+    display: flex;
+   gap: 1rem;
+    align-items: center;
 }

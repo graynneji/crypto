@@ -13,7 +13,8 @@
   /* font-weight: 800; */
   border: none;
   cursor: pointer;
-  display: inline-block;
+  /* display: inline-block; */
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -38,7 +39,7 @@ height: 5rem;
   /* color: #222; */
   /* border: 1px solid black; */
   /* background-color: #C07F00; */
-  background-color: #44441D;
+  background-color: #222222;
   margin-bottom: 1.5rem;
 }
 .button-container.register {
@@ -51,7 +52,7 @@ height: 5rem;
   background: none;
   color: #fff;
   /* border: 1px solid black; */
-  background-color: #44441D;
+  background-color: #222222;
   margin-bottom: 1.5rem;
 }
 .button-container.google-sign-in {
@@ -70,23 +71,44 @@ height: 5rem;
   }
 .deposit{
 /* width: 100%; */
-background-color: #44441D;
+/* background-color: #001d3d; */
 /* background-color: #c08000a8; */
+background-color: white;
+color: black;
+border: 1px solid black;
 padding: .8rem 1.2rem .8rem 1.2rem;
 font-size: 1.3rem;
 display: flex;
 align-items: center;
 gap: 1rem;
-color: #fff;
+/* color: #fff; */
 }
 .withdrawal{
-  background-color: #77777774;
-padding: .8rem 1.2rem .8rem 1.2rem;
+  background-color: #222222;
+  /* background-color: #fff; */
+padding: 1.5rem 2rem 1.5rem  2rem;
 font-size: 1.3rem;
 display: flex;
 align-items: center;
 gap: 1rem;
-color: black;
+/* color: black; */
+color: #fff;
+border: .1rem solid #000;
+width: 50%;
+border-radius: 5rem;
+}
+.move{
+  background-color: #fff;
+  color: black;
+  border-radius: 5rem;
+  width: 50%;
+  border: .1rem solid #000;
+padding: 1.5rem 2rem 1.5rem  2rem;
+font-size: 1.3rem;
+}
+.move:hover{
+background-color: #222222;
+color: #fff;
 }
 .trade{
   background-color: #77777774;
@@ -118,13 +140,18 @@ color: black;
 .subscribe{
 
     min-width: 12rem;
-    height: 5rem;
+    height: 4rem;
     place-self: end;
     border-radius: 5rem;
-    background-color: rgba(0, 128, 0, 0.742);
+    /* background-color:#001d3d; */
+    background-color:#222222;
+    /* background-color: rgba(0, 128, 0, 0.742); */
     border: none;
 color: #fff;
 font-size: 1.5rem;
 font-weight: 700;
 
+}
+.starts{
+  background-color: #222222;
 }

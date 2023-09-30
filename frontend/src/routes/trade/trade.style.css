@@ -9,15 +9,65 @@
     justify-content: center; */
     /* place-items: center; */
     /* row-gap: 1.5rem; */
-    margin-bottom: 1.9rem;
+    /* margin-bottom: 1.9rem; */
     /* background-color: #fff; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 6rem; */
 
 }
 
 .trade-header{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
+}
+.trade-header-head{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 7rem;
+}
+.available-balance{
+    padding: 2rem;
+    margin-bottom: 4rem;
+    /* background-color: #999; */
+    /* border: .1rem solid #999; */
+    border-radius: .5rem;
+    /* background-color: #F1EFEF; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.173);
+
+}
+.available-balance p{
+    font-size: 2rem;
+    /* font-weight: 600; */
+    margin-bottom: 1rem;
+}
+.available-balance span{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #444;
+}
+.balance{
+    margin-bottom: 2rem;
+}
+.trade-image{
+    width: 20%;
+}
+.plans-plans{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+.subscribe-plans{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+#show-btc-trade{
+    font-size: 1.5rem;
+    padding: .4rem 0rem .4rem 0rem;
 }

@@ -1,0 +1,48 @@
+.start-container{
+    width: 90%;
+    margin: 0 auto;
+
+}
+.trade-amount-input{
+padding: 1.5rem 4rem 1.5rem 1rem;
+border: .1rem solid #444;
+border-radius: .5rem;
+}
+.subscription-form-page h2{
+margin-bottom: 4rem;
+}
+.subscription-form-page input{
+    /* margin-bottom: 2rem; */
+}
+.subscription-form-page p{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.amount-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.read-only input{
+    padding: 1.5rem 4rem 1.5rem 1rem;
+    border: .1rem solid #444;
+    border-radius: .5rem;
+    border: none;
+    background-color: #9999994a;
+    outline: none;
+}
+.read-only input:focus{
+    border: none;
+}
+.read-only{
+    display: flex;
+    flex-direction: column;
+margin-bottom: 2rem;
+}
+.read-only label{
+    font-size: 1.5rem;
+}
+.amount-input label{
+    font-size: 1.5rem;
+
+}

@@ -145,11 +145,12 @@ const websockets = tradingPairs.map((pair) => {
         const percentageChange = ((price - previousPrice) / previousPrice) * 100;
 
         // Update the price and percentage change in the dataObject
+        const per = (parseFloat(dataObject[symbol].percentageChange) + percentageChange).toFixed(2);
         dataObject[symbol] = {
           name: pair.name,
           symbol: currency,
           price: price,
-          percentageChange: (parseFloat(dataObject[symbol].percentageChange) + percentageChange).toFixed(2),
+          percentageChange: per == -0.00 ? 0.00.toFixed(2) : per
         };
       } else {
         // Initialize the dataObject entry with default values

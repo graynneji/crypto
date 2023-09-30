@@ -39,7 +39,7 @@ export const options = {
     },
     layout: {
       padding: {
-        left: 80, // Add margin to the top
+        left: 60, // Add margin to the top
       },
     },
   },
@@ -95,9 +95,11 @@ export const data = {
       label: "Dataset 2",
       data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
       // borderColor: "rgb(53, 162, 235)",
-      borderColor: "#44441d",
+      // borderColor: "#001d3d",
+      // borderColor: "#44441D",
+      borderColor: "#222222",
       // backgroundColor: "rgba(53, 162, 235, 0.5)",
-      // backgroundColor: "#44441d91",
+      backgroundColor: "#22222225",
       tension: 0.4, // Make the line curvy
       // pointRadius: 4, // Set the radius for data points
       // borderWidth: 0, // Remove the line inside the chart

@@ -1,7 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "../button/button.component";
 import { Outlet } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
 import "./header.style.css";
@@ -11,17 +11,29 @@ import AnalyticsIcon from "@mui/icons-material/Analytics";
 import { BiSupport } from "react-icons/bi";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import Search from "../search/search.component";
+import { Link } from "react-router-dom";
+
 export default function Header({ color }) {
-  const token = localStorage.getItem("accessToken");
+  const [userData, setUserData] = useState(null);
+  const token = sessionStorage.getItem("userData");
+  useEffect(() => {
+    const data = sessionStorage.getItem("user");
+    setUserData(data);
+  }, [userData]);
   // const token = null;
   const [isSignIn, setIsSignIn] = useState(null);
   const [count, setCount] = useState(9);
+
   return (
     <>
       <header className="header">
-        {token ? (
+        {userData ? (
           <div className="header-side">
-            <AccountCircleIcon style={{ fontSize: "2.7rem" }} />
+            <Link to="/dashboard">
+              <div className="logo">
+                <AnalyticsIcon fontSize="large" /> G-X Trade
+              </div>
+            </Link>
             <Search />
             {/* <Button type="button" buttonType="deposit">
                 <SystemUpdateAltIcon /> Deposit
@@ -43,12 +55,6 @@ export default function Header({ color }) {
             <AnalyticsIcon fontSize="large" /> G-X Trade
           </div>
         )}
-
-        {/* <AccountCircleIcon fontSize="large" color="#444" />
-      <div className="right-header">
-        <ManageSearchIcon fontSize="large" />
-        <QrCode2Icon fontSize="large" />
-      </div> */}
       </header>
       <Outlet />
     </>

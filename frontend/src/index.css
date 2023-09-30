@@ -2,17 +2,20 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+
 }
 html {
   font-size: 62.5%;
   /* overflow-x: hidden; */
+min-height: 100%;
 }
 body {
   justify-content: center;
-  max-height: 100vh;
+min-height: 100%;
 
   font-family: "Montserrat", sans-serif;
-
+display: flex;
+flex-direction: column;
   /* list-style: 1; */
   font-weight: 400;
 }
@@ -40,4 +43,14 @@ body {
 
   /* margin-bottom: 1.9rem; */
   background-color: #fff
+}
+a{
+  text-decoration: none;
+  font-size: 1.5rem;
+color:#444 ;
+/* color:#44441d ; */
+font-weight: 600;
+}
+a:hover{
+  color: #111;
 }
